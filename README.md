@@ -35,7 +35,7 @@ Each solution includes:
 ## 🧮 Problem Stats
 
 <p align="center">
-  <img src="https://leetcard.jacoblin.cool/Mayank-cyber-cell?theme=dark&font=Fira%20Code&ext=heatmap" alt="LeetCode Stats" />
+  <img src="(https://leetcard.jacoblin.cool/mayankkshah?theme=catppuccinMocha&font=Sora&ext=heatmap)" />
 </p>
 
 ---
