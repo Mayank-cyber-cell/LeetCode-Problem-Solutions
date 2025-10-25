@@ -1,9 +1,4 @@
 
-<!-- Intro Section -->
-<p align="center">
-  <img src="https://media.giphy.com/media/L8K62iTDkzGX6/giphy.gif" width="60">
-</p>
-
 <p align="center">
   Welcome to my <b>LeetCode Problem Solutions Repository</b>! 🎯  
   Here, I upload my clean and optimized solutions to various <b>LeetCode</b> problems in languages like  
@@ -32,13 +27,6 @@ Each solution includes:
 
 ---
 
-## 🧮 Problem Stats
-
-<p align="center">
-  <img src="![LeetCode Stats](https://leetcard.jacoblin.cool/mayankkshah?theme=catppuccinMocha&font=Sora&ext=heatmap)" />
-</p>
-
----
 
 ## 🧠 Goal
 
@@ -47,26 +35,7 @@ Each solution includes:
 
 ---
 
-## 🌱 Connect With Me
 
-<p align="center">
-  <a href="https://github.com/Mayank-cyber-cell" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-Mayank--cyber--cell-181717?style=for-the-badge&logo=github" />
-  </a>
-  <a href="https://www.linkedin.com/in/mayank-kumar-shah/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-Mayank%20Kumar%20Shah-blue?style=for-the-badge&logo=linkedin" />
-  </a>
-</p>
-
----
-
-## 🧩 Fun Animation
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/abhisheknaiidu/abhisheknaiidu/master/code.gif" width="400" alt="Coding Animation">
-</p>
-
----
 
 ## ⭐ Show Some Love
 If you like this repo, don't forget to **Star ⭐** it and follow for more updates!  
