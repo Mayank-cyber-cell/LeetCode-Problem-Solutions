@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int minimumTotal(int** triangle, int triangleSize, int* triangleColSize) {
+    int n = triangleSize;
+    int* dp = (int*)malloc(n * sizeof(int));
+
+    // initialize dp with the last row
+    for (int j = 0; j < triangleColSize[n-1]; j++) {
+        dp[j] = triangle[n-1][j];
+    }
+
+    // bottom-up calculation
+    for (int i = n - 2; i >= 0; i--) {
+        for (int j = 0; j < triangleColSize[i]; j++) {
+            dp[j] = triangle[i][j] + (dp[j] < dp[j+1] ? dp[j] : dp[j+1]);
+        }
+    }
+
+    int result = dp[0];
+    free(dp);
+    return result;
+}
