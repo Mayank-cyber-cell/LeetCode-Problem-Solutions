@@ -1,8 +1,8 @@
 <h1 align="center">✨ LeetCode Problem Solutions ✨</h1>
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&pause=1000&color=00C853&center=true&vCenter=true&width=435&lines=Welcome+to+My+LeetCode+Solutions+Repo!;DSA+%7C+Java+%7C+Python+%7C+C%2B%2B+%7C+C;Consistency+Beats+Intensity+🔥" alt="Typing SVG" />
-</p>
+<h3 align="center">
+  <p align="center"> Welcome to my <b>LeetCode Problem Solutions Repository</b>! 🎯 Here, I upload my clean and optimized solutions to various <b>LeetCode</b> problems in languages like <b>Java, Python, C++,</b> and <b>C</b>. </p> </h3>
+  
 
 ---
 
