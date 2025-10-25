@@ -35,7 +35,7 @@ Each solution includes:
 ## 🧮 Problem Stats
 
 <p align="center">
-  <img src="(https://leetcard.jacoblin.cool/mayankkshah?theme=catppuccinMocha&font=Sora&ext=heatmap)" />
+  <img src="![LeetCode Stats](https://leetcard.jacoblin.cool/mayankkshah?theme=catppuccinMocha&font=Sora&ext=heatmap)" />
 </p>
 
 ---
