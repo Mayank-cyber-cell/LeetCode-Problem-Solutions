@@ -1,7 +1,3 @@
-<!-- Animated Header -->
-<h1 align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&pause=1000&color=00F5D4&center=true&vCenter=true&width=600&lines=🚀+LeetCode+Problem+Solutions;💻+By+Mayank+Kumar+Shah;⚡+Code.+Solve.+Repeat." alt="Typing Animation" />
-</h1>
 
 <!-- Intro Section -->
 <p align="center">
