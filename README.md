@@ -2,6 +2,23 @@
 
 <h3 align="center">
   <p align="center"> Welcome to my <b>LeetCode Problem Solutions Repository</b>! 🎯 Here, I upload my clean and optimized solutions to various <b>LeetCode</b> problems in languages like <b>Java, Python, C++,</b> and <b>C</b>. </p> </h3>
+
+## 🧩 My LeetCode Profile
+
+<div align="center">
+
+<a href="https://leetcode.com/u/mayankkshah/" target="_blank">
+  <img src="https://leetcode-stats.vercel.app/api?username=mayankkshah&theme=dark&border=rgba(255,255,255,0.15)&border_radius=15&show_icons=true" alt="LeetCode Stats" width="90%" />
+</a>
+
+<p align="center">
+  <a href="https://leetcode.com/u/mayankkshah/">
+    <img src="https://img.shields.io/badge/Visit%20Profile-%2300C853?style=for-the-badge&logo=leetcode&logoColor=white" />
+  </a>
+</p>
+
+</div>
+
   
 
 ---
