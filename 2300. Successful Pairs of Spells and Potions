@@ -1,0 +1,17 @@
+import bisect
+
+class Solution:
+    def successfulPairs(self, spells, potions, success):
+        potions.sort()
+        m = len(potions)
+        res = []
+        
+        for spell in spells:
+            
+            min_potion = (success + spell - 1) // spell 
+            idx = bisect.bisect_left(potions, min_potion)
+            res.append(m - idx)
+        
+        return res
+
+        
