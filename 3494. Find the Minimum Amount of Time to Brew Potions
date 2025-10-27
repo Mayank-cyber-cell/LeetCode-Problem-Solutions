@@ -1,0 +1,31 @@
+class Solution:
+    def minTime(self, skill, mana):
+        n = len(skill)
+        m = len(mana)
+     
+        S = [0] * n
+        s = 0
+        for i in range(n):
+            s += skill[i]
+            S[i] = s
+
+       
+        if m == 1:
+            return S[-1] * mana[0]
+
+        total_delta = 0
+    
+        for j in range(m - 1):
+            mj = mana[j]
+            mj1 = mana[j + 1]
+
+            prev = 0
+            maxc = -10**30
+            for si in S:
+                cand = mj * si - mj1 * prev
+                if cand > maxc:
+                    maxc = cand
+                prev = si
+            total_delta += maxc
+
+        return total_delta + S[-1] * mana[-1]
