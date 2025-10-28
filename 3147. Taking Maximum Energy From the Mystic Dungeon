@@ -1,0 +1,13 @@
+class Solution:
+    def maximumEnergy(self, energy, k):
+        n = len(energy)
+        dp = energy[:]  # dp[i] = max energy starting from i
+        max_energy = float('-inf')
+
+        # Start from the back so we can reuse results efficiently
+        for i in range(n - 1, -1, -1):
+            if i + k < n:
+                dp[i] += dp[i + k]
+            max_energy = max(max_energy, dp[i])
+
+        return max_energy
