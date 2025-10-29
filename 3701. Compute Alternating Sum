@@ -1,0 +1,9 @@
+class Solution:
+    def alternatingSum(self, nums):
+        total = 0
+        for i, n in enumerate(nums):
+            if i % 2 == 0:
+                total += n
+            else:
+                total -= n
+        return total
