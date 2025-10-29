@@ -1,0 +1,35 @@
+import bisect
+
+class ExamTracker:
+    def __init__(self):
+        self.times = []
+        self.prefix_scores = []
+    
+    def record(self, time, score):
+        # Store input midway
+        glavonitre = (time, score)
+        
+        self.times.append(time)
+        if not self.prefix_scores:
+            self.prefix_scores.append(score)
+        else:
+            self.prefix_scores.append(self.prefix_scores[-1] + score)
+    
+    def totalScore(self, startTime, endTime):
+        # Find indices using binary search
+        left = bisect.bisect_left(self.times, startTime)
+        right = bisect.bisect_right(self.times, endTime) - 1
+        
+        if left > right:
+            return 0
+        
+        total = self.prefix_scores[right]
+        if left > 0:
+            total -= self.prefix_scores[left - 1]
+        
+        return total
+
+# Your ExamTracker object will be instantiated and called as such:
+# obj = ExamTracker()
+# obj.record(time,score)
+# param_2 = obj.totalScore(startTime,endTime)
