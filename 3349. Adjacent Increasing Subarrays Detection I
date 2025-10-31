@@ -1,0 +1,15 @@
+class Solution:
+    def isIncreasing(self, arr):
+        for i in range(1, len(arr)):
+            if arr[i] <= arr[i - 1]:
+                return False
+        return True
+
+    def hasIncreasingSubarrays(self, nums, k):
+        n = len(nums)
+        for i in range(0, n - 2 * k + 1):
+            first = nums[i:i + k]
+            second = nums[i + k:i + 2 * k]
+            if self.isIncreasing(first) and self.isIncreasing(second):
+                return True
+        return False
