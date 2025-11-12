@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+        int n = nums.size();
+        int countOfOne = count(nums.begin(), nums.end(), 1);
+
+        // Case 1: Already have some 1s
+        if (countOfOne > 0) {
+            return n - countOfOne;
+        }
+
+        // Case 2: Find the smallest subarray with GCD = 1
+        int minSubarray = INT_MAX;
+        for (int i = 0; i < n; ++i) {
+            int currGCD = nums[i];
+            for (int j = i + 1; j < n; ++j) {
+                currGCD = gcd(currGCD, nums[j]);
+                if (currGCD == 1) {
+                    minSubarray = min(minSubarray, j - i);
+                    break; // No need to extend further
+                }
+            }
+        }
+
+        // If no subarray with GCD = 1 exists, impossible
+        if (minSubarray == INT_MAX) return -1;
+
+        // Otherwise: (minSubarray operations to get one 1) + (n - 1) to spread it
+        return minSubarray + n - 1;
+    }
+};
