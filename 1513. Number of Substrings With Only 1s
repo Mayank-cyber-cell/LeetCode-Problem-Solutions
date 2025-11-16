@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int numSub(string s) {
+        const int MOD = 1000000007;
+        int totalCount = 0;
+        int consecutiveOnes = 0;
+
+        for (const char& currentChar : s) {
+            if (currentChar == '1') {
+                consecutiveOnes++;
+                totalCount = (totalCount + consecutiveOnes) % MOD;
+            } else {
+                consecutiveOnes = 0;
+            }
+        }
+        return totalCount;
+    }
+};
