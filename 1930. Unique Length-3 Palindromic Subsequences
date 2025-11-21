@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int countPalindromicSubsequence(string s) {
+        int result = 0;
+
+        for (char ch = 'a'; ch <= 'z'; ++ch) {
+            int firstIndex = s.find_first_of(ch);
+            int lastIndex  = s.find_last_of(ch);
+
+            if (firstIndex == string::npos || firstIndex == lastIndex) continue;
+
+            int mask = 0;
+            for (int i = firstIndex + 1; i < lastIndex; ++i) {
+                int idx = s[i] - 'a';
+                if (!((mask >> idx) & 1)) {
+                    mask |= (1 << idx);
+                    result++;
+                }
+            }
+        }
+
+        return result;
+    }
+};
