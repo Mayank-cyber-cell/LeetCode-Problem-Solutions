@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int minimumOperations(vector<int>& nums) {
+        int totalOperations = 0;
+      
+        for (int num : nums) {
+        
+            int remainder = num % 3;
+          
+            if (remainder != 0) {
+                
+                totalOperations += min(remainder, 3 - remainder);
+            }
+        }
+      
+        return totalOperations;
+    }
+};
