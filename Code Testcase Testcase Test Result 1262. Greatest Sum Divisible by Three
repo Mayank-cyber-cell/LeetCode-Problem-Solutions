@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int maxSumDivThree(vector<int>& nums) {
+        const int NEG = -1e9;
+        vector<int> dp(3, NEG);
+        dp[0] = 0;
+
+        for (int x : nums) {
+            vector<int> prev = dp;
+            for (int r = 0; r < 3; r++) {
+                int nr = (r + x) % 3;
+                dp[nr] = max(dp[nr], prev[r] + x);
+            }
+        }
+
+        return dp[0];
+    }
+};
