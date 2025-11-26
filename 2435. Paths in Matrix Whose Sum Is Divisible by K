@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int numberOfPaths(vector<vector<int>>& grid, int k) {
+        int rows = grid.size();
+        int cols = grid[0].size();
+        const int MOD = 1e9 + 7;
+
+        vector<vector<vector<int>>> dp(rows, vector<vector<int>>(cols, vector<int>(k, -1)));
+
+        function<int(int,int,int)> dfs = [&](int r, int c, int sum) -> int {
+            if (r >= rows || c >= cols) return 0;
+
+            sum = (sum + grid[r][c]) % k;
+
+            if (r == rows - 1 && c == cols - 1)
+                return sum == 0 ? 1 : 0;
+
+            if (dp[r][c][sum] != -1) return dp[r][c][sum];
+
+            long long ans = dfs(r + 1, c, sum) + dfs(r, c + 1, sum);
+            ans %= MOD;
+
+            return dp[r][c][sum] = ans;
+        };
+
+        return dfs(0, 0, 0);
+    }
+};
