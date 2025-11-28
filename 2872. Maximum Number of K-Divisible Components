@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int maxKDivisibleComponents(int n, vector<vector<int>>& edges, vector<int>& values, int k) {
+        int componentCount = 0;
+
+        vector<vector<int>> adjacencyList(n);
+        for (const auto& edge : edges) {
+            int nodeA = edge[0];
+            int nodeB = edge[1];
+            adjacencyList[nodeA].push_back(nodeB);
+            adjacencyList[nodeB].push_back(nodeA);
+        }
+
+        function<long long(int, int)> dfs = [&](int currentNode, int parentNode) -> long long {
+            long long subtreeSum = values[currentNode];
+            for (int childNode : adjacencyList[currentNode]) {
+                if (childNode != parentNode) {
+                    subtreeSum += dfs(childNode, currentNode);
+                }
+            }
+            if (subtreeSum % k == 0) componentCount++;
+            return subtreeSum;
+        };
+
+        dfs(0, -1);
+        return componentCount;
+    }
+};
