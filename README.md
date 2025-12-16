@@ -1,7 +1,7 @@
 <h1 align="center">✨ LeetCode Problem Solutions🧪</h1>
 
 <h3 align="center">
-  <p align="center"> Welcome to my <b>LeetCode Problem Solutions Repository</b>! 🎯 Here, I upload my clean and optimized solutions to various <b>LeetCode</b> problems in languages like <b>Java, Python, C++,</b>. </p> </h3>
+  <p align="center"> Welcome to my <b>LeetCode Problem Solutions Repository</b>! 🎯 Here, I upload my clean and optimized solutions to various <b>LeetCode</b> problems in languages like <b>Java, Python, C++</b>. </p> </h3>
 
 ## 🧩 My LeetCode Profile
 
