@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int minDeletionSize(vector<string>& strs) {
+
+        int numColumns = strs[0].size();
+        int numRows = strs.size();
+
+        int deletionCount = 0;
+      
+        // Iterate through each column
+        for (int col = 0; col < numColumns; ++col) {
+
+            for (int row = 1; row < numRows; ++row) {
+                if (strs[row][col] < strs[row - 1][col]) {
+                    ++deletionCount;
+                    break; 
+                }
+            }
+        }
+      
+        return deletionCount;
+    }
+};
