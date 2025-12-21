@@ -1,0 +1,50 @@
+class Solution {
+public:
+    int minDeletionSize(vector<string>& A) {
+        // Handle edge cases: empty array or single string
+        if (A.empty() || A.size() <= 1) {
+            return 0;
+        }
+      
+        int numStrings = A.size();
+        int stringLength = A[0].length();
+        int deletedColumns = 0;
+      
+        // Track which pairs of adjacent strings are already sorted
+        // If sorted[i] is true, it means A[i] < A[i+1] lexicographically
+        vector<bool> sorted(numStrings - 1, false);
+      
+        // Process each column from left to right
+        for (int col = 0; col < stringLength; col++) {
+            // Flag to determine if current column should be deleted
+            bool shouldDelete = false;
+          
+            // Check if current column breaks the sorting order
+            // A column must be deleted if it makes any unsorted pair decrease
+            for (int row = 0; row < numStrings - 1; row++) {
+                // Only check pairs that aren't already determined to be sorted
+                if (!sorted[row] && A[row][col] > A[row + 1][col]) {
+                    // Column breaks sorting order, must delete it
+                    shouldDelete = true;
+                    break;
+                }
+            }
+          
+            if (shouldDelete) {
+                // Increment deletion count and move to next column
+                deletedColumns++;
+                continue;
+            }
+          
+            // Column is valid, update sorted status for string pairs
+            // Mark pairs as sorted if current column makes them strictly increasing
+            for (int row = 0; row < numStrings - 1; row++) {
+                if (A[row][col] < A[row + 1][col]) {
+                    sorted[row] = true;
+                }
+            }
+        }
+      
+        return deletedColumns;
+    }
+};
