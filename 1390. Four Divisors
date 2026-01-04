@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int sumFourDivisors(vector<int>& nums) {
+        int totalSum = 0;
+        for (int number : nums) {
+            totalSum += getSumIfExactlyFourDivisors(number);
+        }
+      
+        return totalSum;
+    }
+
+private:
+    int getSumIfExactlyFourDivisors(int number) {
+
+        int divisorCount = 2;
+        int divisorSum = 1 + number;
+      
+        for (int i = 2; i * i <= number; ++i) {
+            if (number % i == 0) {
+
+                divisorCount++;
+                divisorSum += i;
+
+                if (i * i != number) {
+                    divisorCount++;
+                    divisorSum += number / i;
+                }
+            }
+        }
+    
+        return (divisorCount == 4) ? divisorSum : 0;
+    }
+};
