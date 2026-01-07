@@ -1,0 +1,56 @@
+class Solution {
+public:
+    int maxProduct(TreeNode* root) {
+        using ll = long long;
+      
+        // Constants
+        const int MOD = 1e9 + 7;
+      
+        // Variable to store the maximum product
+        ll maxProductValue = 0;
+      
+        // Lambda function to calculate the sum of all nodes in the tree
+        function<ll(TreeNode*)> calculateTotalSum = [&](TreeNode* node) -> ll {
+            // Base case: empty node
+            if (!node) {
+                return 0;
+            }
+          
+            // Recursive case: current node value + sum of left subtree + sum of right subtree
+            return node->val + calculateTotalSum(node->left) + calculateTotalSum(node->right);
+        };
+      
+        // Calculate the total sum of all nodes in the tree
+        ll totalSum = calculateTotalSum(root);
+      
+        // Lambda function to traverse the tree and find the maximum product
+        // Returns the sum of the subtree rooted at the current node
+        function<ll(TreeNode*)> findMaxProduct = [&](TreeNode* node) -> ll {
+            // Base case: empty node
+            if (!node) {
+                return 0;
+            }
+          
+            // Calculate the sum of the current subtree
+            ll currentSubtreeSum = node->val + findMaxProduct(node->left) + findMaxProduct(node->right);
+          
+            // Check if we can split the tree at this edge
+            // Only consider valid splits (subtree sum < total sum)
+            if (currentSubtreeSum < totalSum) {
+                // Calculate the product of the two parts after splitting
+                // Part 1: currentSubtreeSum
+                // Part 2: (totalSum - currentSubtreeSum)
+                ll product = currentSubtreeSum * (totalSum - currentSubtreeSum);
+                maxProductValue = max(maxProductValue, product);
+            }
+          
+            return currentSubtreeSum;
+        };
+      
+        // Traverse the tree to find the maximum product
+        findMaxProduct(root);
+      
+        // Return the result modulo MOD
+        return maxProductValue % MOD;
+    }
+};
