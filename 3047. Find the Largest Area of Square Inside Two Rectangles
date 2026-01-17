@@ -1,0 +1,43 @@
+class Solution {
+public:
+    long long largestSquareArea(vector<vector<int>>& bottomLeft, vector<vector<int>>& topRight) {
+        long long maxSquareArea = 0;
+      
+        // Iterate through all pairs of rectangles
+        for (int i = 0; i < bottomLeft.size(); ++i) {
+            // Get coordinates of the first rectangle
+            int rect1_x1 = bottomLeft[i][0];  // Bottom-left x coordinate
+            int rect1_y1 = bottomLeft[i][1];  // Bottom-left y coordinate
+            int rect1_x2 = topRight[i][0];     // Top-right x coordinate
+            int rect1_y2 = topRight[i][1];     // Top-right y coordinate
+          
+            // Compare with all subsequent rectangles to find overlaps
+            for (int j = i + 1; j < bottomLeft.size(); ++j) {
+                // Get coordinates of the second rectangle
+                int rect2_x1 = bottomLeft[j][0];  // Bottom-left x coordinate
+                int rect2_y1 = bottomLeft[j][1];  // Bottom-left y coordinate
+                int rect2_x2 = topRight[j][0];     // Top-right x coordinate
+                int rect2_y2 = topRight[j][1];     // Top-right y coordinate
+              
+                // Calculate the overlapping region dimensions
+                // Overlap width: minimum of right edges minus maximum of left edges
+                int overlapWidth = min(rect1_x2, rect2_x2) - max(rect1_x1, rect2_x1);
+              
+                // Overlap height: minimum of top edges minus maximum of bottom edges
+                int overlapHeight = min(rect1_y2, rect2_y2) - max(rect1_y1, rect2_y1);
+              
+                // The maximum square that fits in the overlap has side length equal to
+                // the minimum of overlap width and height
+                int maxSquareSide = min(overlapWidth, overlapHeight);
+              
+                // Check if there is a valid overlap (positive dimensions)
+                if (maxSquareSide > 0) {
+                    // Update maximum square area found so far
+                    maxSquareArea = max(maxSquareArea, static_cast<long long>(maxSquareSide) * maxSquareSide);
+                }
+            }
+        }
+      
+        return maxSquareArea;
+    }
+};
