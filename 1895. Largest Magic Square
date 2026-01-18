@@ -1,0 +1,86 @@
+class Solution {
+public:
+    int largestMagicSquare(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();  // Fixed: should be grid[0].size() for column count
+      
+        // Prefix sum arrays for rows and columns (1-indexed for easier calculation)
+        vector<vector<int>> rowPrefixSum(m + 1, vector<int>(n + 1));
+        vector<vector<int>> colPrefixSum(m + 1, vector<int>(n + 1));
+      
+        // Build prefix sum arrays
+        // rowPrefixSum[i][j] = sum of elements from grid[i-1][0] to grid[i-1][j-1]
+        // colPrefixSum[i][j] = sum of elements from grid[0][j-1] to grid[i-1][j-1]
+        for (int i = 1; i <= m; ++i) {
+            for (int j = 1; j <= n; ++j) {
+                rowPrefixSum[i][j] = rowPrefixSum[i][j - 1] + grid[i - 1][j - 1];
+                colPrefixSum[i][j] = colPrefixSum[i - 1][j] + grid[i - 1][j - 1];
+            }
+        }
+      
+        // Try squares from largest possible size down to 2x2
+        for (int squareSize = min(m, n); squareSize > 1; --squareSize) {
+            // Try all possible top-left corners for current square size
+            for (int topRow = 0; topRow + squareSize - 1 < m; ++topRow) {
+                for (int leftCol = 0; leftCol + squareSize - 1 < n; ++leftCol) {
+                    int bottomRow = topRow + squareSize - 1;
+                    int rightCol = leftCol + squareSize - 1;
+                  
+                    // Check if current square is a magic square
+                    if (isMagicSquare(grid, rowPrefixSum, colPrefixSum, 
+                                     topRow, leftCol, bottomRow, rightCol)) {
+                        return squareSize;
+                    }
+                }
+            }
+        }
+      
+        // A 1x1 square is always magic
+        return 1;
+    }
+
+private:
+    bool isMagicSquare(vector<vector<int>>& grid, 
+                       vector<vector<int>>& rowPrefixSum, 
+                       vector<vector<int>>& colPrefixSum, 
+                       int topRow, int leftCol, int bottomRow, int rightCol) {
+      
+        // Calculate the target sum using the first row
+        int targetSum = rowPrefixSum[topRow + 1][rightCol + 1] - rowPrefixSum[topRow + 1][leftCol];
+      
+        // Check if all rows have the same sum
+        for (int row = topRow + 1; row <= bottomRow; ++row) {
+            int rowSum = rowPrefixSum[row + 1][rightCol + 1] - rowPrefixSum[row + 1][leftCol];
+            if (rowSum != targetSum) {
+                return false;
+            }
+        }
+      
+        // Check if all columns have the same sum
+        for (int col = leftCol; col <= rightCol; ++col) {
+            int colSum = colPrefixSum[bottomRow + 1][col + 1] - colPrefixSum[topRow][col + 1];
+            if (colSum != targetSum) {
+                return false;
+            }
+        }
+      
+        // Check main diagonal (top-left to bottom-right)
+        int mainDiagonalSum = 0;
+        for (int i = topRow, j = leftCol; i <= bottomRow; ++i, ++j) {
+            mainDiagonalSum += grid[i][j];
+        }
+        if (mainDiagonalSum != targetSum) {
+            return false;
+        }
+      
+        // Check anti-diagonal (top-right to bottom-left)
+        int antiDiagonalSum = 0;
+        for (int i = topRow, j = rightCol; i <= bottomRow; ++i, --j) {
+            antiDiagonalSum += grid[i][j];
+        }
+        if (antiDiagonalSum != targetSum) {
+            return false;
+        }
+      
+        return true;
+    }
+};
